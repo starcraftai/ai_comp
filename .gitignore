@@ -3,6 +3,7 @@
 *.blg
 *.aux
 *.log
+*.bbl
 
 # Windows image file caches
 Thumbs.db
