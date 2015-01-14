@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+
+
+% The following parameters seem to provide a reasonable page setup.
+\topmargin 0.0cm
+\oddsidemargin 0.2cm
+\textwidth 16cm 
+\textheight 21cm
+\footskip 1.0cm
+
+
+%The next command sets up an environment for the abstract to your paper.
+\newenvironment{sciabstract}{%
+\begin{quote} \bf}
+{\end{quote}}
+
+\newcounter{lastnote}
+\newenvironment{scilastnote}{%
+\setcounter{lastnote}{\value{enumiv}}%
+\addtocounter{lastnote}{+1}%
+\begin{list}%
+{\arabic{lastnote}.}
+{\setlength{\leftmargin}{.22in}}
+{\setlength{\labelsep}{.5em}}}
+{\end{list}}
+
+
+\title{\textit{StarCraft AI Competition}\hspace{0.75cm}\\
+CS7038\\\line(1, 0){300}
+} 
+\author
+{Giovanni Campo, Patrick O'Halloran \& Jeremiah Dunn}
+\date{}
+
+
+\begin{document} 
+
+% Double-space the manuscript.
+\baselineskip24pt
+
+
+% Make the title.
+\maketitle 
+
+
+
+% Place your abstract within the special {sciabstract} environment.
+
+\begin{sciabstract}
+ 	\input{sections/abstract}
+\end{sciabstract}
+
+
+\section{Introduction}
+
+\input{sections/intro}
+
+
+\section{Makarov Chains}
+
+\input{sections/makarov}
+
+
+\section{Implementation}
+
+\input{sections/implementation}
+
+
+\section{Results}
+
+\input{sections/results}
+
+
+\section{Conclusion}
+
+\input{sections/conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% sample figure code
+%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.4, trim = 0cm 0cm 0cm 0cm]{images/test}
+%\label{fig:some_label}
+%\caption{some figure}
+%\end{figure}
+
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\label{endpage}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
