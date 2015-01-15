@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5853,        147]
+NotebookOptionsPosition[      5419,        129]
+NotebookOutlinePosition[      5794,        145]
+CellTagsIndexPosition[      5751,        142]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Phi]", "[", 
+   RowBox[{"x_", ",", "\[Sigma]_", ",", "\[Mu]_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"x", "<", "\[Mu]"}], ",", "1", ",", 
+    SuperscriptBox["E", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", 
+        RowBox[{"2", 
+         SuperscriptBox["\[Sigma]", "2"]}]]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"x", "-", "\[Mu]"}], ")"}], "2"]}]]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.630337356798621*^9, 3.630337381975128*^9}, {
+   3.630338037167506*^9, 3.6303381374715614`*^9}, {3.6303385418543186`*^9, 
+   3.6303385506024976`*^9}, {3.6303386748262243`*^9, 3.630338678493301*^9}, {
+   3.6303441786841745`*^9, 3.63034421126383*^9}, {3.6303443224290686`*^9, 
+   3.6303443269201603`*^9}, 3.63034442785067*^9}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"\[Phi]", "[", 
+      RowBox[{"x", ",", "\[Sigma]", ",", "\[Mu]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "10"}], "}"}], ",", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"\[Phi]", "[", "x", "]"}]}], "}"}]}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+     RowBox[{"Filling", "\[Rule]", "Bottom"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "Orange"}], ",", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.2", "]"}], ",", "Yellow"}], "]"}]}]}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Sigma]", ",", "1", ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "0", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6303411917730036`*^9, 3.6303412448952303`*^9}, {
+   3.6303422753202233`*^9, 3.630342285815528*^9}, {3.6303424260703564`*^9, 
+   3.630342511346084*^9}, {3.6303425563069954`*^9, 3.6303425735363417`*^9}, {
+   3.6303426057169914`*^9, 3.630342616168203*^9}, 3.630343229212723*^9, {
+   3.6303433694635525`*^9, 3.630343398921146*^9}, {3.6303442254251146`*^9, 
+   3.6303443346473174`*^9}, {3.630344658360829*^9, 3.6303446598408585`*^9}, {
+   3.6303447396780643`*^9, 3.630344751957313*^9}, {3.6303448633775635`*^9, 
+   3.6303448667976327`*^9}, {3.6303449122555494`*^9, 
+   3.6303450087869825`*^9}, {3.6303450460739183`*^9, 
+   3.6303450678604107`*^9}, {3.630345097891173*^9, 3.6303451434141407`*^9}, {
+   3.6303451760759015`*^9, 3.630345182773036*^9}, {3.630345261846634*^9, 
+   3.630345286676134*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Mu]$$ = 0.32, $CellContext`\[Sigma]$$ = 
+    2.8, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Sigma]$$], 1, 10}, {
+      Hold[$CellContext`\[Mu]$$], 0, 10}}, Typeset`size$$ = {
+    745., {230., 239.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Sigma]$151891$$ = 
+    0, $CellContext`\[Mu]$151892$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Mu]$$ = 0, $CellContext`\[Sigma]$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Sigma]$$, $CellContext`\[Sigma]$151891$$, 0], 
+        Hold[$CellContext`\[Mu]$$, $CellContext`\[Mu]$151892$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[
+        $CellContext`\[Phi][$CellContext`x, $CellContext`\[Sigma]$$, \
+$CellContext`\[Mu]$$], {$CellContext`x, 0, 10}, AxesLabel -> {$CellContext`x, 
+          $CellContext`\[Phi][$CellContext`x]}, PlotRange -> Full, Filling -> 
+        Bottom, PlotStyle -> Orange, FillingStyle -> Directive[
+          Opacity[0.2], Yellow]], 
+      "Specifications" :> {{$CellContext`\[Sigma]$$, 1, 
+         10}, {$CellContext`\[Mu]$$, 0, 10}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{808., {339., 348.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{{3.6303455057838907`*^9, 3.630345535446498*^9}}],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{3.6303440555194035`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6303424937957296`*^9, 3.630342494476744*^9}}]
+},
+WindowSize->{1680, 1008},
+WindowMargins->{{Automatic, 1672}, {Automatic, -8}},
+Magnification:>1.3 Inherited,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 825, 20, 61, "Input"],
+Cell[1386, 42, 1731, 36, 65, "Input"],
+Cell[3120, 80, 2124, 41, 708, InheritFromParent],
+Cell[5247, 123, 71, 1, 39, "Input"],
+Cell[5321, 126, 94, 1, 39, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
