@@ -2,17 +2,14 @@
 
 \subsection{Unit Construction Structures}
 
--talk about a generic unit building structure
 
--building mode has separate actions for each type of troop with an assigned probability
-
--update this image using the existing scv power-point as a template
+Figure~\ref{fig:scv_diagram} shows the Markov Chain which dictates the behaviour of unit constructing structures. The unlabelled actions represent the change state change from building a unit to being idle which the player has no control over. The probabilities \(P_{I}\) and \(P_{B}\) refer to the probability that an idle structure remains idle or builds a unit. \(P_{UX}\) refers to the probability of the structure building unit \(X\).
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.8, trim = 0cm 0cm 0cm 0cm]{diagrams/barracks}
+\includegraphics[scale=0.8, trim = 0cm 0cm 0cm 0cm]{diagrams/building_units}
 \label{fig:barracks_diagram}
-\caption{Markov Chain for unit building structures.}
+\caption{A generalised Markov chain for unit building structures.}
 \end{figure}
 
 \subsection{Research Orientated Structures}
