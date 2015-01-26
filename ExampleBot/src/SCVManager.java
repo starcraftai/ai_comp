@@ -18,14 +18,13 @@ public class SCVManager {
 	{
 		this.self = self;
 		this.game = game;
-		markovChainState = new Harvesting<SCVManager>();
-		
+		 
 		state = State.HARVEST;
 	}
 	
 	public void update()
 	{
-		markovChainState.handleInput(unit, gaussianParameters);
+		//markovChainState.handleInput(unit, gaussianParameters);
 		//Ideally would have a state class so we can just call state.execute
 		// however the number of states is very low
 		

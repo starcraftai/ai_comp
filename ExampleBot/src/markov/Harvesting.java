@@ -13,13 +13,12 @@ public class Harvesting<T extends Agent> extends MarkovChainState<T> {
 	
 	 
 	@Override
-	protected double calculateProbability(GaussianParameters gaussianParameters) {
+	protected double calculateProbability(GaussianParameters gaussianParameters, WorldParameters worldParameters) {
 		return DensityProbabilityCalculator.CalculateProbability(gaussianParameters);
 	}
 
 	@Override
-	protected MarkovChainState<T> getNextState(T agent,
-			double probabilityTransition) {
+	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition) {
 		if (probabilityTransition > probability)
 			return new Building<T>();
  
