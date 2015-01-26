@@ -1,40 +1,60 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
+import util.Tuple;
+import markov.GaussianParameters;
+import markov.WorldParameters;
 import agent.Agent;
+import agent.BuildOrder;
+import agent.BuildingType;
 import bwapi.Game;
 import bwapi.Player;
 import bwapi.Unit;
 import bwapi.UnitType;
 
 
-public class AgentManager {
-	ArrayList<Agent> agents;
+public class AgentManager<T extends Agent> {
+	ArrayList<T> agents;
 	
 	private Game game;
-	private Player player; 
-	
-	public AgentManager(Game game, Player player){
+	private Player player;  
+    private BuildOrder buildOrder;
+    
+	public AgentManager(Game game, Player player, BuildOrder buildOrder){
 		this.game = game;
 		this.player = player;
+		this.buildOrder = buildOrder;
 	}
 	
-	public void update() {
-		for (Agent agent : agents) {
-			// use Agent class to decide on next actions
-		}
+	public void add(T agent)
+	{
+		agents.add(agent);
 	}
 	
-	public void destroyUnit(Unit unit){
-		// override .equals to allow for removal with unit input?
-		agents.remove(unit);
+	public void update(WorldParameters worldParameters) {
 		
-		//otherwise iterate through and remove unit with matching id?
-		/*for (int i = 0; i < agents.size(); i++) {
-		if(agents.get(i).id == unit.getID()){
-			agents.remove(i);
-			break;
+		for (T agent : agents) {
+			agent.update(worldParameters, game);
 		}
-		}*/
+	}
+	
+	public void destroyUnit(T agent){ 
+		agents.remove(agent);
+	}
+	
+	public int AgentBuilding()
+	{
+		int counter = 0;
+		
+		for(Agent agent : agents)
+		{
+			if (agent.unit.getType() == UnitType.Terran_SCV && agent.unit.isConstructing())
+			{ 
+				counter++;
+			}
+		}
+		
+		return counter;
 	}
 	
 	public void createUnit(Unit unit){

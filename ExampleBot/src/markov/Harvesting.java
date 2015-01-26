@@ -1,5 +1,6 @@
 package markov;
 import agent.Agent;
+import agent.BuildOrder;
 import bwapi.Game;
 import bwapi.Unit;
 
@@ -26,7 +27,7 @@ public class Harvesting<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected void performAction(T agent, Game game) {
+	protected void performAction(T agent, Game game,BuildOrder buildOrder) {
 		 
 		 Unit closestMineral = null;
 		 Unit agentUnit = agent.unit;

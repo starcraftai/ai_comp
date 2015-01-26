@@ -1,8 +1,8 @@
 package markov;
 
-public final class WorldParameters {
+public   class WorldParameters {
 
 	public int buildingScvs;
-	public int totalSlots;
-	public int slotsAvailable;
+	public int supplyTotal;
+	public int supplyUsed;
 }
