@@ -34,8 +34,4 @@ public class IdleBarracks<T extends Agent> extends MarkovChainState<T> {
 	protected void performAction(T agent, Game game) {
 		 
 	}
-
-	
-	 
-
 }

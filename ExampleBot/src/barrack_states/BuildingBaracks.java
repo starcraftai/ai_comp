@@ -7,6 +7,7 @@ import markov.WorldParameters;
 import agent.Agent;
 import bwapi.Game;
 import bwapi.Unit;
+import bwapi.UnitType;
 
 public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 	boolean startedTrainingUnit = false;
@@ -32,12 +33,17 @@ public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 
 	@Override
 	protected void performAction(T agent, Game game) {
-		// building not ready to build a troop 
+		// building not ready or is already training a troop
 		if(!agent.unit.isCompleted() || agent.unit.isTraining()) return;
 		
-		if(!agent.unit.isTraining() && startedTrainingUnit = true){
+		// building has completed training
+		if(!agent.unit.isTraining() && startedTrainingUnit == true){
 			// hard trigger next state
+			
+			return;
 		}
-		 
+		
+		agent.unit.train(UnitType.Terran_Marine);
+		startedTrainingUnit = true;
 	}
 }
