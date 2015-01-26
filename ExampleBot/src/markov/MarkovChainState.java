@@ -1,8 +1,9 @@
 package markov;
+import Agent;
 import bwapi.Unit;
 
 
-public abstract class MarkovChainState<T> {
+public abstract class MarkovChainState<T extends Agent> {
 		
 		protected double probability;
 		
