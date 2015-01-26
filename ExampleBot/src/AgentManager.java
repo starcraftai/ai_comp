@@ -34,7 +34,7 @@ public class AgentManager<T extends Agent> {
 	public void update(WorldParameters worldParameters) {
 		
 		for (T agent : agents) {
-			agent.update(worldParameters, game);
+			agent.update(worldParameters, game,buildOrder);
 		}
 	}
 	

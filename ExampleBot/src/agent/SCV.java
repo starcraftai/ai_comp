@@ -1,5 +1,4 @@
-package agent;
-import markov.GaussianParameters;
+package agent; 
 import markov.Harvesting; 
 import markov.WorldParameters;
 import bwapi.Game;
@@ -19,7 +18,7 @@ public class SCV extends Agent {
 		@Override
 		public void update(WorldParameters worldParameters, Game game,BuildOrder buildOrder){
 			
-			markovChainState.update(this, gaussianParameters, worldParameters, game, buildOrder); 
+			markovChainState.update(this,worldParameters, game, buildOrder); 
 			
 		}
 }

@@ -5,6 +5,7 @@ import markov.GaussianParameters;
 import markov.MarkovChainState;
 import markov.WorldParameters;
 import agent.Agent;
+import agent.BuildOrder;
 import bwapi.Game;
 import bwapi.Unit;
 
@@ -31,7 +32,7 @@ public class BarracksIdle<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected void performAction(T agent, Game game) {
+	protected void performAction(T agent, Game game,BuildOrder buildOrder) {
 		 
 	}
 }

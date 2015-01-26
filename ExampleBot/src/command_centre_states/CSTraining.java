@@ -5,6 +5,7 @@ import markov.GaussianParameters;
 import markov.MarkovChainState;
 import markov.WorldParameters;
 import agent.Agent;
+import agent.BuildOrder;
 import bwapi.Game;
 import bwapi.Unit;
 import bwapi.UnitType;
@@ -32,7 +33,7 @@ public class CSTraining<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected void performAction(T agent, Game game) {
+	protected void performAction(T agent, Game game,BuildOrder buildOrder) {
 		// building not ready or is already training a troop
 		if(!agent.unit.isCompleted() || agent.unit.isTraining()) return;
 		
