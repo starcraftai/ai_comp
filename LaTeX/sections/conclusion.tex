@@ -1,21 +1,30 @@
 %conclusions
--what do we think about the results?
+%-what do we think about the results?
 
--Difficulty in testing performance
- *evaluating building and resource gathering not straight forward\\
- *what is an optimal result of this process (speed in building attack units?)\\
- *how to test against other systems\\
+While the results showed that Markov chains could be used for resource management and building, the scale of the problem of writing AI to play StarCraft and the limitations of writing AI for a game that was never designed to support them made evaluating performance difficult.
 
--Needs integration with a full strategy to yield good results\\
- *would need testing against a multitude of bots to avoid over-training\\
- *different attack strategies could benefit from different Markov chains - would need to train for specific strategies.\\
+Optimal performance would also depend on the implementation of other components but our agents could, in theory, learn an optimal solution for these components.
+
+%-Difficulty in testing performance
+% *evaluating building and resource gathering not straight forward\\
+% *what is an optimal result of this process (speed in building attack units?)\\
+% *how to test against other systems\\
+
+%-Needs integration with a full strategy to yield good results\\
+% *would need testing against a multitude of bots to avoid over-training\\
+% *different attack strategies could benefit from different Markov chains - would need to train for specific strategies.\\
 
 %Future Work
-Future work -other forms of learning algorithms?
+%Future work -other forms of learning algorithms?
 
 
--genetic algorithms\\
- + handle a multitude of different variables\\
- + could keep \textit{dna} binary strings separate for different agents and have agent specific genetic functions\\
- - would require many iterations to yield good results\\
- - performance metric operator still an issue
+%-genetic algorithms\\
+% + handle a multitude of different variables\\
+% + could keep \textit{dna} binary strings separate for different agents and have agent specific genetic functions\\
+% - would require many iterations to yield good results\\
+% - performance metric operator still an issue
+
+Future work could be carried out on integrating our solution with different offensive agents and evaluating their performance.
+
+In addition, different techniques could be used to learn parameters for the Markov chains. Genetic algorithms seem promising as they can handle a multitude of different variables. Individual binary \textit{DNA} strings along with unique reproduction functions could be made for each of the different agents and their performance could be measured together, as a \textit{colony}, as a twist on the usual implementation of Genetic Algorithms. This would however require many iterations to get right and the issue of good performance metrics would remain.
+
