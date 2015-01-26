@@ -22,8 +22,16 @@ public class Building<T extends Agent> extends MarkovChainState<T> {
 
 	@Override
 	protected void performAction(T agent, Game game) {
-		 
 		
 	}
-
+	
+	/**
+	 * looks for an open space, xSize * ySize, to construct a building at least one tile away from other buildings
+	 * 
+	 * @param xSize horizontal tiles
+	 * @param ySize vertical tiles
+	 */
+	private void searchForOpenSpace(int xSize, int ySize) {
+		
+	}
 }

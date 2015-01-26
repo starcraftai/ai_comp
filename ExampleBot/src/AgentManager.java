@@ -27,7 +27,7 @@ public class AgentManager {
 		// override .equals to allow for removal with unit input?
 		agents.remove(unit);
 		
-		//otherwise itterate through and remove unit with matching id?
+		//otherwise iterate through and remove unit with matching id?
 		/*for (int i = 0; i < agents.size(); i++) {
 		if(agents.get(i).id == unit.getID()){
 			agents.remove(i);
