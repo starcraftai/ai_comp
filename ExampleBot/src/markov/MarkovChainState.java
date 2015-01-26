@@ -1,20 +1,20 @@
-package markov; 
+package markov;
 import bwapi.Unit;
 
 
-public abstract class MarkovChainState<T extends Agent> {
+public abstract class MarkovChainState<T> {
 		
 		protected double probability;
 		
-		public MarkovChainState<T> GetNextState(T t,GaussianParameters gaussianParameters){
+		public MarkovChainState<T> GetNextState(T unit,GaussianParameters gaussianParameters){
 			probability = calculateProbability(gaussianParameters);
-			return null;
-			//return update(unit);
+			
+			return update(unit);
 		}
 	
 		protected abstract MarkovChainState<T> update(T unit, double probabilityTransition);
 		
 		protected abstract double calculateProbability(GaussianParameters gaussianParameters);
 		 
-		
+	
 }
