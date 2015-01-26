@@ -11,7 +11,7 @@ import bwapi.UnitType;
 
 public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 	boolean startedTrainingUnit = false;
-	
+	boolean finishedTrainingUnit = false;
 	public BuildingBaracks()
 	{
 		probability = 0.8; // High number. An scv should always harvest
@@ -25,7 +25,7 @@ public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 
 	@Override
 	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition) {
-		if (probabilityTransition > probability)
+		if (finishedTrainingUnit) //hard trigger
 			return new IdleBarracks<T>();
  
 		return this;
@@ -39,7 +39,7 @@ public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 		// building has completed training
 		if(!agent.unit.isTraining() && startedTrainingUnit == true){
 			// hard trigger next state
-			
+			finishedTrainingUnit = true;
 			return;
 		}
 		
