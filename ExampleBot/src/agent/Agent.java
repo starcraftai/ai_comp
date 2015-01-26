@@ -12,10 +12,12 @@ public abstract class Agent  {
 	public MarkovChainState<Agent> markovChainState;
 	public double currentProbability;
 	public Unit unit;
+	public boolean isBuilding;
 	 
 	public abstract void update(WorldParameters worldParameters, Game game, BuildOrder buildOrder);
 	
 	protected Agent(Unit unit){ 
 		this.unit = unit;
+		currentProbability = 0.0;
 	}
 }

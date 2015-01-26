@@ -24,6 +24,7 @@ public class AgentManager<T extends Agent> {
 		this.game = game;
 		this.player = player;
 		this.buildOrder = buildOrder;
+		agents = new ArrayList<T>();
 	}
 	
 	public void add(T agent)

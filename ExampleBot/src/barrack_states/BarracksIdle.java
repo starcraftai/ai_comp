@@ -14,7 +14,7 @@ public class BarracksIdle<T extends Agent> extends MarkovChainState<T> {
 	
 	public BarracksIdle()
 	{
-		probability = 0.01; // called every frame so keep it low enough
+	 
 	}
 	
 	 
@@ -24,15 +24,15 @@ public class BarracksIdle<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition) {
-		if (probabilityTransition > probability)
+	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition,GaussianParameters gaussianParameters) {
+		if (probabilityTransition > agent.currentProbability)
 			return new BaracksBuilding<T>();
  
 		return this;
 	}
 
 	@Override
-	protected void performAction(T agent, Game game,BuildOrder buildOrder) {
+	protected void performAction(T agent, Game game,BuildOrder buildOrder, WorldParameters worldParameters) {
 		 
 	}
 }

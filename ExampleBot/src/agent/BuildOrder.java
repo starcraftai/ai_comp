@@ -1,5 +1,7 @@
 package agent;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
 
 import bwapi.UnitType;
@@ -9,11 +11,11 @@ import util.Tuple;
 public class BuildOrder {
 	
 
-    private Stack<Tuple<UnitType,GaussianParameters>> buildOrder;
+    private Queue<Tuple<UnitType,GaussianParameters>> buildOrder;
     
     public BuildOrder()
     {
-    	buildOrder = new Stack<Tuple<UnitType,GaussianParameters>>();
+    	buildOrder = new ArrayDeque<Tuple<UnitType,GaussianParameters>>();
     }
     
     public void add(Tuple<UnitType,GaussianParameters> item)
@@ -22,11 +24,15 @@ public class BuildOrder {
     }
     
     public Tuple<UnitType,GaussianParameters> dequeue(){
-    	return buildOrder.pop();
+    	return buildOrder.poll();
     }
     
     public Tuple<UnitType,GaussianParameters> peek()
     {
     	return buildOrder.peek();
+    }
+    
+    public boolean isEmpty(){
+    	return buildOrder.isEmpty();
     }
 }

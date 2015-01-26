@@ -15,7 +15,7 @@ public class CSTraining<T extends Agent> extends MarkovChainState<T> {
 	boolean finishedTrainingUnit = false;
 	public CSTraining()
 	{
-		probability = 0.01; // called every frame so keep it low enough
+	 
 	}
 	
 	 
@@ -25,7 +25,7 @@ public class CSTraining<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition) {
+	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition,GaussianParameters gaussianParameters) {
 		if (finishedTrainingUnit) //hard trigger
 			return new CSIdle<T>();
  
@@ -33,7 +33,7 @@ public class CSTraining<T extends Agent> extends MarkovChainState<T> {
 	}
 
 	@Override
-	protected void performAction(T agent, Game game,BuildOrder buildOrder) {
+	protected void performAction(T agent, Game game,BuildOrder buildOrder, WorldParameters worldParameters) {
 		// building not ready or is already training a troop
 		if(!agent.unit.isCompleted() || agent.unit.isTraining()) return;
 		

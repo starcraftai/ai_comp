@@ -5,4 +5,5 @@ public   class WorldParameters {
 	public int buildingScvs;
 	public int supplyTotal;
 	public int supplyUsed;
+	public int minerals;
 }

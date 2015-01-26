@@ -15,7 +15,7 @@ public class Jarvis extends DefaultBWListener {
     private Mirror mirror = new Mirror();
     private Game game;
     private Player self;
-    
+    private  BuildOrder buildOrder;
     private AgentManager<SCV> agentManager; 
     
     public void run() {
@@ -27,7 +27,7 @@ public class Jarvis extends DefaultBWListener {
     public void onUnitCreate(Unit unit) {
         //System.out.println("New unit " + unit.getType());
     	
-    	if (unit.getType() != UnitType.Terran_SCV) return;
+    	if (!unit.getType().isWorker()) return;
     	
     	SCV scv = new SCV(unit);
     	agentManager.add(scv);
@@ -45,7 +45,7 @@ public class Jarvis extends DefaultBWListener {
         game = mirror.getGame();
         self = game.self();
         
-       BuildOrder buildOrder = new BuildOrder(); 
+        buildOrder = new BuildOrder(); 
         
         GaussianParameters supplyDepotGaussian = new GaussianParameters();
         supplyDepotGaussian.mean = 1.88;
@@ -63,6 +63,7 @@ public class Jarvis extends DefaultBWListener {
         BWTA.readMap();
         BWTA.analyze();
         System.out.println("Map data ready");
+     
 
     }
 
@@ -74,8 +75,10 @@ public class Jarvis extends DefaultBWListener {
     	worldParameters.buildingScvs = agentManager.AgentBuilding();
     	worldParameters.supplyUsed = self.supplyUsed();
     	worldParameters.supplyTotal = self.supplyTotal();
-    			
-    	 
+    	worldParameters.minerals = self.minerals();
+    	
+    	if (!buildOrder.isEmpty())
+    		buildOrder.peek().t2.x = worldParameters.supplyTotal - worldParameters.supplyUsed;
     			
     	agentManager.update(worldParameters);
     	
@@ -90,6 +93,8 @@ public class Jarvis extends DefaultBWListener {
     	
         game.setTextSize(10);
         game.drawTextScreen(10, 10, "Playing as " + self.getName() + " - " + self.getRace());
+        System.out.println("Supply left: " + Integer.toString(worldParameters.supplyTotal - worldParameters.supplyUsed));
+       // System.out.println("Current Command: " + buildOrder.peek().t1);
     }
  
     

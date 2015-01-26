@@ -8,11 +8,13 @@ import bwapi.Unit;
 public class SCV extends Agent {
 	 
 		
+		
 		public SCV(Unit unit)
 		{
 			super(unit);
 			 
 			markovChainState = new Harvesting<Agent>(); 
+			currentProbability = 0.7;
 		}
 		
 		@Override
