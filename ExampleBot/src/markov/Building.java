@@ -47,14 +47,12 @@ public class Building<T extends Agent> extends MarkovChainState<T> {
 			game.printf("Cannot find Command Cetre");
 			return null;
 		}
-		
-		Position initialPos = commandCentre.getPosition();
-		int radius = 1;
-		
+
 		// ugly loop to search outwards from start location
 		boolean found = false;
 		TilePosition buildPos = null;
-		for (int r = 0; r < MAX_SEARCH_RADIUS && !found; r++) {
+		Position initialPos = commandCentre.getPosition();
+		for (int r = 1; r < MAX_SEARCH_RADIUS && !found; r++) {
 			int y = initialPos.getY() - r;
 			for (int x = initialPos.getX() - r; x <= initialPos.getX() + r && !found; x++) {
 				found =  game.canBuildHere(builder, new TilePosition(x, y), building.getType());
