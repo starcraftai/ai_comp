@@ -1,3 +1,12 @@
+import java.util.Map;
+import java.util.Stack;
+
+import util.Tuple;
+import markov.GaussianParameters;
+import markov.WorldParameters;
+import agent.BuildOrder;
+import agent.BuildingType;
+import agent.SCV;
 import bwapi.*;
 import bwta.BWTA;
 
@@ -7,8 +16,8 @@ public class Jarvis extends DefaultBWListener {
     private Game game;
     private Player self;
     
-    private SCVManager scvManager;
-
+    private AgentManager<SCV> agentManager; 
+    
     public void run() {
         mirror.getModule().setEventListener(this);
         mirror.startGame();
@@ -16,8 +25,12 @@ public class Jarvis extends DefaultBWListener {
 
     @Override
     public void onUnitCreate(Unit unit) {
-        System.out.println("New unit " + unit.getType());
-        
+        //System.out.println("New unit " + unit.getType());
+    	
+    	if (unit.getType() != UnitType.Terran_SCV) return;
+    	
+    	SCV scv = new SCV(unit);
+    	agentManager.add(scv);
     }
     
     
@@ -32,8 +45,18 @@ public class Jarvis extends DefaultBWListener {
         game = mirror.getGame();
         self = game.self();
         
-        scvManager = new SCVManager(self, game);
-
+       BuildOrder buildOrder = new BuildOrder(); 
+        
+        GaussianParameters supplyDepotGaussian = new GaussianParameters();
+        supplyDepotGaussian.mean = 1.88;
+        supplyDepotGaussian.standardDeviation = 2.8;
+        buildOrder.add(new Tuple<UnitType,GaussianParameters>(UnitType.Terran_Supply_Depot, supplyDepotGaussian));
+        
+        GaussianParameters barrackGaussian = new GaussianParameters();
+         
+        buildOrder.add(new Tuple<UnitType,GaussianParameters>(UnitType.Terran_Barracks, barrackGaussian));
+        
+        agentManager = new AgentManager<SCV>(game, self, buildOrder);
         //Use BWTA to analyze map
         //This may take a few minutes if the map is processed first time!
         System.out.println("Analyzing map...");
@@ -46,12 +69,23 @@ public class Jarvis extends DefaultBWListener {
     @Override
     public void onFrame() 
     {
-    	scvManager.update();
+    	WorldParameters worldParameters = new WorldParameters();
     	
-        //if there's enough minerals, train an SCV
-        if (myUnit.getType() == UnitType.Terran_Command_Center && self.minerals() >= 50) 
-        {
-            myUnit.train(UnitType.Terran_SCV);
+    	worldParameters.buildingScvs = agentManager.AgentBuilding();
+    	worldParameters.supplyUsed = self.supplyUsed();
+    	worldParameters.supplyTotal = self.supplyTotal();
+    			
+    	 
+    			
+    	agentManager.update(worldParameters);
+    	
+    	for (Unit myUnit : self.getUnits()) {
+    		//if there's enough minerals, train an SCV
+	        if (myUnit.getType() == UnitType.Terran_Command_Center && self.minerals() >= 50) 
+	        {
+	        	if (!myUnit.isTraining())
+	        		myUnit.train(UnitType.Terran_SCV);
+	        }
         }
     	
         game.setTextSize(10);
@@ -60,6 +94,6 @@ public class Jarvis extends DefaultBWListener {
  
     
     public static void main(String[] args) {
-        new TestBot1().run();
+        new Jarvis().run();
     }
 }
