@@ -1,21 +1,26 @@
 package markov;
-import Agent;
-import bwapi.Unit;
+import agent.Agent;
+import bwapi.Game; 
 
 
 public abstract class MarkovChainState<T extends Agent> {
 		
 		protected double probability;
 		
-		public MarkovChainState<T> GetNextState(T unit,GaussianParameters gaussianParameters){
+		@SuppressWarnings("unchecked")
+		public void update(T agent,GaussianParameters gaussianParameters, Game game){
 			probability = calculateProbability(gaussianParameters);
+			agent.markovChainState = (MarkovChainState<Agent>) getNextState(agent,probability);
 			
-			return update(unit);
+			performAction(agent,game);
+			
+			
 		}
 	
-		protected abstract MarkovChainState<T> update(T unit, double probabilityTransition);
+		protected abstract MarkovChainState<T> getNextState(T agent, double probabilityTransition);
 		
 		protected abstract double calculateProbability(GaussianParameters gaussianParameters);
 		 
-	
+
+		protected abstract void performAction(T agent, Game game);
 }
