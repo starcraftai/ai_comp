@@ -1,4 +1,4 @@
-package barrack_states;
+package command_centre_states;
 import markov.Building;
 import markov.DensityProbabilityCalculator;
 import markov.GaussianParameters;
@@ -9,12 +9,12 @@ import bwapi.Game;
 import bwapi.Unit;
 import bwapi.UnitType;
 
-public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
+public class CSTraining<T extends Agent> extends MarkovChainState<T> {
 	boolean startedTrainingUnit = false;
 	boolean finishedTrainingUnit = false;
-	public BuildingBaracks()
+	public CSTraining()
 	{
-		probability = 0.8; // High number. An scv should always harvest
+		probability = 0.01; // called every frame so keep it low enough
 	}
 	
 	 
@@ -26,7 +26,7 @@ public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 	@Override
 	protected MarkovChainState<T> getNextState(T agent, double probabilityTransition) {
 		if (finishedTrainingUnit) //hard trigger
-			return new IdleBarracks<T>();
+			return new CSIdle<T>();
  
 		return this;
 	}
@@ -43,7 +43,7 @@ public class BuildingBaracks<T extends Agent> extends MarkovChainState<T> {
 			return;
 		}
 		
-		agent.unit.train(UnitType.Terran_Marine);
+		agent.unit.train(UnitType.Terran_SCV);
 		startedTrainingUnit = true;
 	}
 }

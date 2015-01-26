@@ -1,4 +1,6 @@
 package agent;
+import command_centre_states.CSIdle;
+
 import markov.GaussianParameters;
 import markov.Harvesting; 
 import barrack_states.BarracksIdle;
@@ -6,13 +8,13 @@ import bwapi.Game;
 import bwapi.Unit;
 
 
-public class Barracks extends Agent {
+public class CommandCentre extends Agent {
 	 
 		
-		public Barracks(Unit unit)
+		public CommandCentre(Unit unit)
 		{
 			super.unit = unit;
-			markovChainState = new BarracksIdle<Agent>();
+			markovChainState = new CSIdle<Agent>();
 			//markovChainState = new Harvesting<SCV>();
 		}
 		
