@@ -1,6 +1,9 @@
+import bwapi.Unit;
 import markov.MarkovChainState;
 
 public abstract class Agent {
-	public MarkovChainState<SCV> markovChainState;
-	public double currentProbability;
+	
+	protected MarkovChainState<Agent> markovChainState;
+	protected double currentProbability;
+	protected Unit unit;
 }
