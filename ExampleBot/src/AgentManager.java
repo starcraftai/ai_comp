@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import agent.Agent;
 import bwapi.Game;
 import bwapi.Player;
 import bwapi.Unit;
