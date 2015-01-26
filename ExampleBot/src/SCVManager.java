@@ -1,10 +1,12 @@
+import markov.Harvesting;
+import markov.MarkovChainState;
 import bwapi.*;
 
 //Implements the SCV Markov Chain
 public class SCVManager {
 	
 	private Game game;
-	private Player self;
+	private Player self; 
 	
 	public enum State {
 		HARVEST, BUILD
@@ -16,31 +18,32 @@ public class SCVManager {
 	{
 		this.self = self;
 		this.game = game;
+		markovChainState = new Harvesting<SCVManager>();
 		
 		state = State.HARVEST;
 	}
 	
 	public void update()
 	{
-		transitionCheck();
-		
+		markovChainState.handleInput(unit, gaussianParameters);
 		//Ideally would have a state class so we can just call state.execute
 		// however the number of states is very low
+		
+		
 		if(state == State.HARVEST)
 			harvest();
 		else if(state == State.BUILD)
 			build();
 	}
 	
-	private void transitionCheck()
-	{
-		//probability stuff here
-	}
+	 
 
 	private void harvest()
 	{
+		
         for (Unit myUnit : self.getUnits()) 
         {
+        	 
             //if it's a drone and it's idle, send it to the closest mineral patch
             if (myUnit.getType().isWorker() && myUnit.isIdle()) 
             {

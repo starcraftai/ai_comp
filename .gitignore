@@ -4,6 +4,7 @@
 *.aux
 *.log
 *.bbl
+*.class
 
 # Windows image file caches
 Thumbs.db

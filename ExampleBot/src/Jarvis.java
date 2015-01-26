@@ -1,7 +1,7 @@
 import bwapi.*;
 import bwta.BWTA;
 
-public class TestBot1 extends DefaultBWListener {
+public class Jarvis extends DefaultBWListener {
 
     private Mirror mirror = new Mirror();
     private Game game;
@@ -17,8 +17,15 @@ public class TestBot1 extends DefaultBWListener {
     @Override
     public void onUnitCreate(Unit unit) {
         System.out.println("New unit " + unit.getType());
+        
     }
+    
+    
+    @Override
+    public void onUnitDestroy(Unit unit){
 
+    }
+    
     @Override
     public void onStart() 
     {
@@ -42,15 +49,16 @@ public class TestBot1 extends DefaultBWListener {
     	scvManager.update();
     	
         //if there's enough minerals, train an SCV
-        //if (myUnit.getType() == UnitType.Terran_Command_Center && self.minerals() >= 50) 
-        //{
-            //myUnit.train(UnitType.Terran_SCV);
-        //}
+        if (myUnit.getType() == UnitType.Terran_Command_Center && self.minerals() >= 50) 
+        {
+            myUnit.train(UnitType.Terran_SCV);
+        }
     	
         game.setTextSize(10);
         game.drawTextScreen(10, 10, "Playing as " + self.getName() + " - " + self.getRace());
     }
-
+ 
+    
     public static void main(String[] args) {
         new TestBot1().run();
     }
